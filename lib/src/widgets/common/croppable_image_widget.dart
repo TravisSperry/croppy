@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 /// TODO: Document this
-class CroppableImageWidget extends RenderObjectWidget
-    with SlottedMultiChildRenderObjectWidgetMixin<EditableImageSlot> {
+class CroppableImageWidget extends SlottedMultiChildRenderObjectWidget<
+    EditableImageSlot, CroppableImageRenderObject> {
   const CroppableImageWidget({
     super.key,
     required this.controller,
@@ -75,7 +75,9 @@ enum EditableImageSlot {
 }
 
 class CroppableImageRenderObject extends RenderBox
-    with SlottedContainerRenderObjectMixin<EditableImageSlot> {
+    with
+        SlottedContainerRenderObjectMixin<EditableImageSlot,
+            CroppableImageRenderObject> {
   CroppableImageRenderObject(
     CroppableImageData imageData,
     double viewportScale,
